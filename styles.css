@@ -203,15 +203,8 @@ hr {
   line-height: 32px;
   padding-bottom: 6rem;
 }
-
-/**tab**/
-.tab {
-  display: inline-block;
-  margin-left: 40px;
-}
-
-/**selection**/
-::selection {
-  color: black;
-  background: #e5e7eb;
+.link-blogs{
+  color: var(--primary-color);
+  background-color: #f3f4f6;
+  border-radius: 1rem;
 }
