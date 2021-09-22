@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Css selector</title>
+    <style>
+        body{
+            background-color: rgb(0, 0, 0);
+            color: goldenrod;
+            font-family: 'Courier New', Courier, monospace;
+            box-sizing: border-box;
+        }
+        .container-main{
+
+            text-align: justify;
+            color:honeydew;
+            padding: 1em;
+        }
+        h1,h2,h3{
+            color :goldenrod;
+        }
+        pre{
+            display: block;
+            color: rgb(196, 176, 176);
+            font-size: larger;
+        }
+    </style>
+</head>
+<body>
+    <h1>Css selectors</h1>
+    <div class="container-main">        
+        <h3>What is Css and why it is used?</h3>
+    <p>CSS is the language we use to style an HTML document. CSS describes how HTML elements should be displayed. We can define CSS in HTML by three ways
+        <ol>
+            <li>Inline style</li>
+            <li>External</li>
+            <li>Style Tag</li>
+        </ol>
+    </p>
+    <p>But Today in this blog we won't discuss about that we will discuss about selectors</p>
+    <h1>Css Selectors:</h1>
+    <p>These selectors defines that CSS rules applied on which elements in our HTML. </p>
+    <p>In general , we can select the elements from our HTML by three ways
+        <ol>
+            <li><code>Id</code></li>
+            <li><code>Class</code></li>
+            <li><code>Descandant</code></li>
+        </ol>
+        So now let us know about the different selectors through which we can 
+        style our HTML elements.
+    </p>
+     <h2>Basic selector</h2>
+            <div class="container-types">
+                <div id="type1">
+                <h2>1. *</h2>
+                <pre>
+                    * {                    
+                        //styling;
+                    }
+                </pre>
+                <p>This selector will targets every single element present in the html document. But this not the best way to style HTML elements as this adds much more weight to the browser</p>
+                </div>
+            </div>
+             <div class="container-types">
+                <div id="type2">
+                <h2>2. #</h2>
+                <pre>
+                    #_id_element {                    
+                        //styling;
+                    }
+                </pre>
+                <p>Selector with prefix # allows us to style element directly by id</p>
+                </div>
+            </div>
+              <div class="container-types">
+                <div id="type3">
+                <h2>3. .X</h2>
+                <pre>
+                    ._class_element {                    
+                        //styling;
+                    }
+                </pre>
+                <p>Selector with prefix "." allows us to style element directly by the class name . Through this selector we can target multiple groups together.</p>
+                </div>
+                <note style="font-size:large;color:red;font-weight: bolder;"> Use #ID for specific elements whereas use .CLASS for group of elements     
+                </note>
+            </div>
+                <div class="container-types">
+                <div id="type4">
+                <h2>4. X Y</h2>
+                <pre>
+                    x  y{                    
+                        //styling;
+                    }
+                </pre>
+                <p>This is an example of descendant selector. It is used to targe the specific element which are present the first tag that we enter . In our example let  x be list tag and y be anchor tag </p>
+                 <pre>
+                    li a{                    
+                        color:red;
+                    }
+                </pre>
+                <p>So all the anchor tags inside the list will be in red color</p>
+                <p style="font-size:large;color:red;font-weight: bolder;">IF we use + between then then it will target the adjacent elements</p>
+
+                </div>
+            </div>
+              <div class="container-types">
+                <div id="type5">
+                <h2>5. x:visited and x:link</h2>
+                <pre>
+                    a:link{                    
+                        //styling;
+                    }
+                    a:visited{
+                        //styling
+                    }
+                </pre>
+                <p>This is an example of pseudo selector. This allow us to specifically style the :link pseudo class  to target all the links and in the similar way :visited to target all visited links. </p>
+                </div>
+            </div>
+    </div>
+    
+</body>
+</html>
