@@ -5,32 +5,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Css selector</title>
-    <style>
-        body{
-            background-color: rgb(0, 0, 0);
-            color: goldenrod;
-            font-family: 'Courier New', Courier, monospace;
-            box-sizing: border-box;
-        }
-        .container-main{
-
-            text-align: justify;
-            color:honeydew;
-            padding: 1em;
-        }
-        h1,h2,h3{
-            color :goldenrod;
-        }
-        pre{
-            display: block;
-            color: rgb(196, 176, 176);
-            font-size: larger;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    
+    <nav class="navigation container">
+        <div class="nav-brand">
+           Arpit Gupta
+        </div>
+
+
+        <ul class="list-non-bullet nav-pills">
+            <li class="list-item-inline">
+                <a class="link " href="/">Home</a>
+            </li>
+            <li class="list-item-inline">
+                <a class="link " href="/projects.html">Projects</a>
+            </li>
+            <li class="list-item-inline">
+                <a class="link link-active" href="/blogs.html">Blogs</a>
+            </li>
+        </ul>
+    </nav>
     <h1>Css selectors</h1>
-    <div class="container-main">        
+    <div class="container-center">        
         <h3>What is Css and why it is used?</h3>
     <p>CSS is the language we use to style an HTML document. CSS describes how HTML elements should be displayed. We can define CSS in HTML by three ways
         <ol>

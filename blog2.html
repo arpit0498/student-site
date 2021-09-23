@@ -5,27 +5,181 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inception v3</title>
-     <style>
-        body{
-            background-color: rgb(0, 0, 0);
-            color: goldenrod;
-            font-family: 'Courier New', Courier, monospace;
-            box-sizing: border-box;
-        }
-        .container-main{
-
+    <link rel="stylesheet" href="styles.css">
+    <style>
+       #end{
             text-align: justify;
-            color:honeydew;
-            padding: 1em;
-        }
-        h1,h2,h3{
-            color :goldenrod;
+            font-weight: lighter;
+            font-style: italic;
         }
     </style>
+     
 </head>
 <body>
-    <h1>Inception v3</h1>
-    <p>Added soon</p>
+    <nav class="navigation container">
+        <div class="nav-brand">
+           Arpit Gupta
+        </div>
+
+
+        <ul class="list-non-bullet nav-pills">
+            <li class="list-item-inline">
+                <a class="link " href="/">Home</a>
+            </li>
+            <li class="list-item-inline">
+                <a class="link " href="/projects.html">Projects</a>
+            </li>
+            <li class="list-item-inline">
+                <a class="link link-active " href="/blogs.html">Blogs</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container-center">
+
+
+    <h1>Internship project</h1>
+    <h3>Inception V3</h3>
+    <div class="container-main">
+    <p>This blog is a part of my internship that i completed back in 2019. </p>
+    
+                First of all we will understand some basics. 
+                <h3>What is computer vision ? </h3>
+                <p>
+                It is a field of computer science that works on enabling computers to see ,identify and process the images in the same way as human vision does and then comes up with an appropriate solutions . It is like imparting human intelligence and instincts to the computer. 
+                </p>
+                <p>
+                It deals with the manipulation of digital images through a computer. The input of a system is digital image  and system processes that image using efficient algorithm and gives an image as output. 
+                </p>
+                <h2> Problem Statement :</h2>
+                There were two major problems statements that were given :
+                <ol>
+                    <li>To perform annotation on the images given to us and try to figure out best suitable attributes of a person in given image.
+                    </li>
+
+                    <li> To train the model on annotated images using Computer Vision algorithms and test it on the different images and find its accuracy. 
+                    </li>
+                </ol>
+
+                
+
+                <h2>Design .</h2> 
+                <bold>General Approach on how to Solve the problem</bold>
+                <ol>
+
+                        <li> 
+                            For identifying personal attributes we must have many images on which our model is used.
+                        </li>
+                        <li>
+                        After that we have to annotate the given image and pass it to suitable computer vision algorithm so that computer can learn to identify the personal attributes for any other images.
+                        </li>
+                        <li>
+                        At last , we test the accuracy of the model by making prediction on any other images And if it passed threshold value then we can take model for further uses.
+                        </li>
+                </ol>
+            <div id="implementation-theory">
+                <h2>Steps to implement the project:</h2>
+                <ol>
+                <li>     For a computer to understand images , the training data needs to be labelled and presented in a language that the computer would eventually learn and implement by itself.</li>
+                <li>     The labelling methods used to generate usable training data are called annotation techniques , or for a computer vision, image annotation</li>
+                <li> Then after completing the labelling , we have to choose the suitable model for training. The model we choose is Inception V3 .</li>
+                </ol>
+
+            </div>
+            <h2>The jupyter file link </h2>
+            <div id="end">
+            <p>I already mentioned the comments in the code so it will ease you to understand how code works.</p>
+            <p>Mabe i put another blog on explaining the code</p>
+            <a href="https://github.com/arpit0498/EIP4/blob/master/week%205/personfinal.ipynb">The link to the jupyter file </a>
+            </div>
+            <!-- <div id="impletation-practical">
+                <h2>Explaination of code</h2>
+                <p>Step 1: Select the drive or place where you store the data set or images 
+                </p>
+              
+                
+                <pre>
+                     # mount gdrive and unzip data
+                    from google.colab import drive
+                    drive.mount('/content/gdrive')
+                </pre>
+                 <p>Step 2: If the data set in zip file or any other format extract the  data set
+                </p>
+              
+                
+                <pre>
+                    !unzip -q "/content/gdrive/My Drive/hvc_data.zip"
+                    # look for `hvc_annotations.csv` file and `resized` dir
+                    %ls
+                </pre>
+
+                <p>Step 3: Import the libraries
+                </p>
+              
+                
+                <pre>
+                        import cv2
+                        import json
+
+                        import numpy as np
+                        import pandas as pd
+
+                        from functools import partial
+                        from pathlib import Path 
+                        from tqdm import tqdm
+
+                        from google.colab.patches import cv2_imshow
+
+                        from sklearn.model_selection import train_test_split
+                        from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+
+                        from keras.layers import Dense, Conv2D, BatchNormalization, Activation
+                        from keras.layers import AveragePooling2D, Input, Flatten, GlobalAveragePooling2D
+                        from keras.callbacks import ModelCheckpoint, LearningRateScheduler
+                        from keras.callbacks import ReduceLROnPlateau
+                        from keras.preprocessing.image import ImageDataGenerator
+                        from keras.regularizers import l2
+                        from keras.applications.inception_v3 import InceptionV3
+
+                        from keras.layers.core import Dropout
+                        from keras.layers.core import Flatten
+                        from keras.layers.core import Dense
+                        from keras.layers import Input
+                        from keras.models import Model
+                        from keras.optimizers import SGD
+                        from keras.preprocessing.image import ImageDataGenerator
+                        import tensorflow.contrib.eager as tfe
+                        import tensorflow as tf
+                </pre>
+                  <p>Step 4: Load the annotations
+                </p>
+              
+                
+                <pre>
+                    df = pd.read_csv("hvc_annotations.csv")
+                    del df["filename"] # remove unwanted column
+                    df.head()
+                </pre>
+                
+                   <p>Step 5: Load the annotations
+                </p>
+              
+                
+                <pre>
+                    df = pd.read_csv("hvc_annotations.csv")
+                    del df["filename"] # remove unwanted column
+                    df.head()
+                </pre>
+                
+                
+               
+                
+
+            </div> -->
+
+
+    </div>
+    </div>
     
 </body>
 </html>
